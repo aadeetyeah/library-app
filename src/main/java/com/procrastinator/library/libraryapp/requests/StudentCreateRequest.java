@@ -18,6 +18,11 @@ public class StudentCreateRequest {
     private String email;
     private String rollNo;
 
+    //private String username; //some unique vector for distinguishing other users
+    private String password;
+
+
+
     public Student toStudent(){
         return Student.builder().name(this.name).age(this.age).country(this.country).email(this.email)
                 .rollNo(this.rollNo).contact(this.contact).build();

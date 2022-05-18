@@ -1,0 +1,5 @@
+java.sql.SQLIntegrityConstraintViolationException
+
+If we try to insert a user with same mail,contact or roll no
+we get the above exception.
+pls handle this globally with spring boot.

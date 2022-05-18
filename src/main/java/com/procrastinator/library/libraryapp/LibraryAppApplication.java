@@ -1,5 +1,8 @@
 package com.procrastinator.library.libraryapp;
 
+import com.procrastinator.library.libraryapp.models.Admin;
+import com.procrastinator.library.libraryapp.requests.AdminCreateRequest;
+import com.procrastinator.library.libraryapp.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,10 +18,13 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class LibraryAppApplication implements CommandLineRunner {
-	//40:43
+	//01:17
 
 	@Autowired
 	ApplicationContext appContext;
+
+	@Autowired
+	AdminService adminService;
 
 
 	public static void main(String[] args) {
@@ -28,11 +34,14 @@ public class LibraryAppApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		String[] beans = appContext.getBeanDefinitionNames();
+		/*String[] beans = appContext.getBeanDefinitionNames();
 		Arrays.sort(beans);
 		for (String bean : beans) {
 			System.out.println(bean);
-		}
+		}*/
 
+		AdminCreateRequest adminCreateRequest= AdminCreateRequest.builder().name("ABC")
+				.email("abc@gmail.com").password("abc123").build();
+		adminService.saveAdmin(adminCreateRequest);
 	}
 }
