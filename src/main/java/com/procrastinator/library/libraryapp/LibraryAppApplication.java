@@ -1,6 +1,7 @@
 package com.procrastinator.library.libraryapp;
 
 import com.procrastinator.library.libraryapp.models.Admin;
+import com.procrastinator.library.libraryapp.repositories.AdminRepository;
 import com.procrastinator.library.libraryapp.requests.AdminCreateRequest;
 import com.procrastinator.library.libraryapp.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class LibraryAppApplication implements CommandLineRunner {
 	@Autowired
 	AdminService adminService;
 
+	@Autowired
+	AdminRepository adminRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryAppApplication.class, args);
@@ -42,6 +46,9 @@ public class LibraryAppApplication implements CommandLineRunner {
 
 		AdminCreateRequest adminCreateRequest= AdminCreateRequest.builder().name("ABC")
 				.email("abc@gmail.com").password("abc123").build();
-		adminService.saveAdmin(adminCreateRequest);
+		Admin admin=adminRepository.findByName(adminCreateRequest.getName());
+		if(admin==null){
+			adminService.saveAdmin(adminCreateRequest);
+		}
 	}
 }
