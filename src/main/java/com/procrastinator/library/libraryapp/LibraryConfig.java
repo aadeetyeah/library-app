@@ -95,7 +95,7 @@ public class LibraryConfig extends WebSecurityConfigurerAdapter {
         //REDIS CLOUD DEMO
         RedisStandaloneConfiguration redisStandaloneConfiguration=new RedisStandaloneConfiguration(
                 "redis-14967.c301.ap-south-1-1.ec2.cloud.redislabs.com",14967);
-        redisStandaloneConfiguration.setPassword("pXOmKZJv47sEBKg9vgvh37Q24jXRHj52");
+        redisStandaloneConfiguration.setPassword("REDIS_DB_PASSWORD");
         //redis-12763.c264.ap-south-1-1.ec2.cloud.redislabs.com:12763
         //In REDIS CLOUD after ':' the number is port i.e. 12763
 
